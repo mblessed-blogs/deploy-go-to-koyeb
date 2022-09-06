@@ -13,13 +13,13 @@ import (
 
 // home handler is unexported due to no other package requiring the handler
 func home(w http.ResponseWriter, r *http.Request) {
-	response := "Home page lol"
+	response := "Home page"
 	json.NewEncoder(w).Encode(response)
 }
 
 // about handler is unexported due to no other package requiring the handler
 func about(w http.ResponseWriter, r *http.Request) {
-	response := "about lol"
+	response := "about"
 	json.NewEncoder(w).Encode(response)
 }
 
