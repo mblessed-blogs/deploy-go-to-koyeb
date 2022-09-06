@@ -23,6 +23,7 @@ func about(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
+// loadEnv loads our .env file: we will use this to test locally
 func loadEnv() {
 	err := godotenv.Load()
 	if err != nil {
@@ -33,7 +34,7 @@ func loadEnv() {
 func main() {
 
 	// load our env: to be commented out when we push live
-	loadEnv()
+	// loadEnv()
 
 	// create a new router
 	router := chi.NewRouter()
