@@ -36,17 +36,18 @@ func main() {
 	// load our env: to be commented out when we push live
 	// loadEnv()
 
-	// create a new router
-	router := chi.NewRouter()
-	router.HandleFunc("/", home)
-	router.HandleFunc("/about", about)
-
-	// portNumber
+	// get PORT number from our environmental variable
 	var portNumber = os.Getenv("PORT")
 
 	log.Println("Port number: ", portNumber)
 
 	portNumber = ":" + portNumber
+
+	// create a new router
+	router := chi.NewRouter()
+	router.HandleFunc("/", home)
+	router.HandleFunc("/about", about)
+
 	// create our server
 	srv := &http.Server{
 		Addr:    portNumber,
