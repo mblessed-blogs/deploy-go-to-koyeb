@@ -39,6 +39,8 @@ func main() {
 	// portNumber
 	var portNumber = os.Getenv("port")
 
+	log.Println("Port number: ", portNumber)
+
 	portNumber = ":" + portNumber
 	// create our server
 	srv := &http.Server{
