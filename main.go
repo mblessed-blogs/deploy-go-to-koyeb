@@ -28,7 +28,9 @@ func main() {
 	// load our env
 	err := godotenv.Load(".env")
 	if err != nil {
-		log.Println("Port number: ", os.Getenv("port"))
+		log.Println("port number: ", os.Getenv("port"))
+		log.Println("Port number: ", os.Getenv("Port"))
+		log.Println("PORT number: ", os.Getenv("PORT"))
 		log.Fatal("Unable to load env file")
 	}
 
