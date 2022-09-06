@@ -23,16 +23,17 @@ func about(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
-func main() {
-
-	// load our env
-	err := godotenv.Load(".env")
+func loadEnv() {
+	err := godotenv.Load()
 	if err != nil {
-		log.Println("port number: ", os.Getenv("port"))
-		log.Println("Port number: ", os.Getenv("Port"))
-		log.Println("PORT number: ", os.Getenv("PORT"))
 		log.Fatal("Unable to load env file")
 	}
+}
+
+func main() {
+
+	// load our env: to be commented out when we push live
+	loadEnv()
 
 	// create a new router
 	router := chi.NewRouter()
@@ -40,7 +41,7 @@ func main() {
 	router.HandleFunc("/about", about)
 
 	// portNumber
-	var portNumber = os.Getenv("port")
+	var portNumber = os.Getenv("PORT")
 
 	log.Println("Port number: ", portNumber)
 
@@ -52,7 +53,7 @@ func main() {
 	}
 
 	fmt.Printf("Starting server on port %s\n", portNumber)
-	err = srv.ListenAndServe()
+	err := srv.ListenAndServe()
 	if err != nil {
 		log.Fatal(err)
 	}
