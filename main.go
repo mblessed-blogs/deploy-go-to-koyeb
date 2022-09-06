@@ -37,7 +37,7 @@ func main() {
 	router.HandleFunc("/about", about)
 
 	// portNumber
-	var portNumber = os.Getenv("Port")
+	var portNumber = os.Getenv("port")
 
 	portNumber = ":" + portNumber
 	// create our server
