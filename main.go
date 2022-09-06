@@ -17,6 +17,12 @@ func home(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
+// about handler is unexported due to no other package requiring the handler
+func about(w http.ResponseWriter, r *http.Request) {
+	response := "about lol"
+	json.NewEncoder(w).Encode(response)
+}
+
 func main() {
 
 	// load our env
@@ -28,6 +34,7 @@ func main() {
 	// create a new router
 	router := chi.NewRouter()
 	router.HandleFunc("/", home)
+	router.HandleFunc("/about", about)
 
 	// portNumber
 	var portNumber = os.Getenv("PORT")
