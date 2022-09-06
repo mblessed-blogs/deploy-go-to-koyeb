@@ -26,8 +26,9 @@ func about(w http.ResponseWriter, r *http.Request) {
 func main() {
 
 	// load our env
-	err := godotenv.Load()
+	err := godotenv.Load(".env")
 	if err != nil {
+		log.Println("Port number: ", os.Getenv("port"))
 		log.Fatal("Unable to load env file")
 	}
 
